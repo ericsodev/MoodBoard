@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Board";
 import { renewToken } from "./api/auth";
 import { UserContext } from "./contexts/userContext";
+import Home from "./pages/Home";
 
 function App() {
   const [tokenData, dispatchToken] = useReducer(tokenReducer, { token: "" });
@@ -90,7 +91,7 @@ function App() {
                   path="/dashboard"
                   element={<Dashboard></Dashboard>}
                 ></Route>
-                <Route path="/" element={<text>Home</text>}></Route>
+                <Route path="/" element={<Home></Home>}></Route>
               </Routes>
             </UserContext.Provider>
           </TokenContext.Provider>

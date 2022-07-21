@@ -7,7 +7,14 @@ export default function Login(): JSX.Element {
   const { nickname } = useContext(UserContext);
 
   if (tokenData.token) {
-    return <div>Logged in as {nickname}</div>;
+    return (
+      <div>
+        Logged in as {nickname}{" "}
+        <a className="bg-gray-200 py-3 px-6 rounded-lg hover:bg-gray-300 text-slate-900 duration-150 ease-in-out">
+          Logout
+        </a>
+      </div>
+    );
   } else {
     return (
       <div className="">

@@ -4,7 +4,7 @@ export default function reducer(state: any, action: any) {
   let newState = { token: "" };
   let tokenCookie;
   switch (action.type) {
-    case "RESET":
+    case "LOGOUT":
       newState.token = "";
       break;
     case "COOKIE":

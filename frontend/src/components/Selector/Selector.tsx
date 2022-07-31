@@ -83,7 +83,6 @@ function getOnClickFunction(
         token
       );
       if (entry) {
-        console.log(entry);
         dispatchEntries({
           type: "UPDATE_FROM_ARRAY",
           payload: [entry],

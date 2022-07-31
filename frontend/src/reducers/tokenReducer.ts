@@ -30,8 +30,6 @@ export default function reducer(state: any, action: any) {
       break;
     default:
       newState.token = state.token;
-      console.log("run");
   }
-  console.log(newState);
   return newState;
 }

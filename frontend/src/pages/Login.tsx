@@ -48,7 +48,6 @@ export default function Login(): JSX.Element {
 
 async function logout(token: String): Promise<void> {
   try {
-    console.log(1);
     await fetch("http://localhost:5000/auth/logout", {
       headers: { Authorization: `Bearer ${token}` },
     });

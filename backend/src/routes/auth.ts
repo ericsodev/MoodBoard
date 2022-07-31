@@ -85,7 +85,6 @@ router.get(
 
     try {
       const token = await RefreshToken.findOneAndDelete({ user: id });
-      console.log(token);
       res.sendStatus(200);
     } catch (err) {
       console.log(err);

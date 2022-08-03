@@ -77,4 +77,20 @@ router.get("/auth/token", async (req, res) => {
   }
 });
 
+router.get(
+  "/auth/logout",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = (req.user as any)?._id;
+
+    try {
+      const token = await RefreshToken.findOneAndDelete({ user: id });
+      res.sendStatus(200);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+  }
+);
+
 export default router;

@@ -11,7 +11,6 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Board";
 import { renewToken } from "./api/auth";
 import { UserContext } from "./contexts/userContext";
-import Home from "./pages/Home";
 
 function App() {
   const [tokenData, dispatchToken] = useReducer(tokenReducer, { token: "" });
@@ -45,16 +44,6 @@ function App() {
       <div className="bg-zinc-50 h-screen">
         <nav className="bg-slate-300 ">
           <ul className="list-none mx-auto block p-3 w-fit text-slate-700 font-medium">
-            <li className="inline-block mx-8">
-              <NavLink
-                className={(data) =>
-                  data.isActive ? "text-slate-800 font-semibold" : ""
-                }
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
             <li className="inline-block mx-8 active:font-medium">
               <NavLink
                 to="/login"
@@ -65,16 +54,20 @@ function App() {
                 {tokenData.token ? "Account" : "Login"}
               </NavLink>
             </li>
-            <li className="inline-block mx-8">
-              <NavLink
-                to="/dashboard"
-                className={(data) =>
-                  data.isActive ? "text-slate-800 font-semibold" : ""
-                }
-              >
-                Dashboard
-              </NavLink>
-            </li>
+            {tokenData.token ? (
+              <li className="inline-block mx-8">
+                <NavLink
+                  to="/dashboard"
+                  className={(data) =>
+                    data.isActive ? "text-slate-800 font-semibold" : ""
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </nav>
         <div className="px-16 py-8">
@@ -91,7 +84,12 @@ function App() {
                   path="/dashboard"
                   element={<Dashboard></Dashboard>}
                 ></Route>
-                <Route path="/" element={<Home></Home>}></Route>
+                <Route
+                  path="/"
+                  element={
+                    tokenData.token ? <Dashboard></Dashboard> : <Login></Login>
+                  }
+                ></Route>
               </Routes>
             </UserContext.Provider>
           </TokenContext.Provider>

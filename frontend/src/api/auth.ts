@@ -1,5 +1,5 @@
 export async function renewToken() {
-  const res = await fetch("http://localhost:5000/auth/token", {
+  await fetch("/auth/token", {
     credentials: "include",
   });
 }

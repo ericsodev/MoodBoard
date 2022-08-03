@@ -17,17 +17,20 @@ function App() {
   const [userInfo, setUserInfo] = useState({ nickname: "" });
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_BACKEND_URL);
     renewToken()
       .then(() => {
         dispatchToken({ type: "REFRESH" });
       })
       .catch((err) => {
+        dispatchToken({ type: "LOGOUT" });
+        setUserInfo({ nickname: "" });
         console.log(err);
       });
   }, [dispatchToken]);
   useEffect(() => {
     if (tokenData.token) {
-      fetch("http://localhost:5000/user", {
+      fetch("/user", {
         headers: {
           Authorization: `Bearer ${tokenData.token}`,
         },

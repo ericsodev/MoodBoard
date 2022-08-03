@@ -4,7 +4,6 @@ import { moods } from "../../constants";
 import { EntriesContext } from "../../contexts/entriesContext";
 import { SelectedDayContext } from "../../contexts/selectedDayContext";
 import { TokenContext } from "../../contexts/tokenContext";
-import { Entries } from "../../types/Entry";
 import Tooltip from "./Tooltip";
 const OPTIONS: { [key: string]: { desc: string; colour: string } } = {
   0: {

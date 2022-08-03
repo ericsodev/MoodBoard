@@ -4,7 +4,7 @@ export async function submitEntry(
   token: string
 ): Promise<Entry | null> {
   try {
-    const res = await fetch("http://localhost:5000/api/entry", {
+    const res = await fetch("/api/entry", {
       method: "POST",
       body: JSON.stringify(entry),
       headers: {
@@ -22,7 +22,7 @@ export async function submitEntry(
 
 export async function deleteEntry(date: Date, token: string): Promise<boolean> {
   try {
-    await fetch("http://localhost:5000/api/entry", {
+    await fetch("/api/entry", {
       method: "DELETE",
       body: JSON.stringify({ date: date }),
       headers: {

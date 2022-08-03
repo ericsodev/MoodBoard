@@ -37,7 +37,7 @@ export default function Login(): JSX.Element {
       <div className="">
         <a
           className="bg-gray-200 py-2 px-4 rounded-lg hover:bg-gray-300 text-slate-900 font-medium duration-150 ease-in-out"
-          href="http://localhost:5000/auth/github"
+          href={`${process.env.REACT_APP_BACKEND_URL}/auth/github`}
         >
           Login with Github
         </a>
@@ -48,7 +48,7 @@ export default function Login(): JSX.Element {
 
 async function logout(token: String): Promise<void> {
   try {
-    await fetch("http://localhost:5000/auth/logout", {
+    await fetch("/auth/logout", {
       headers: { Authorization: `Bearer ${token}` },
     });
   } catch (err) {

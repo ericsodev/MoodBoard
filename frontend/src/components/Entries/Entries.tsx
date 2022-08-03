@@ -135,7 +135,7 @@ async function getEntries(
 ) {
   try {
     const res = await fetch(
-      "http://localhost:5000/api/entries?" +
+      "/api/entries?" +
         new URLSearchParams({
           start: dateBegin.getTime().toString(),
           end: dateEnd.getTime().toString(),
